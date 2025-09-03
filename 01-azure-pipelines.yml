@@ -34,5 +34,5 @@ jobs:
   - Job1
   - Job2
   steps:
-  - script: echo Hello, world, changed Job3!
+  - script: echo Hello, world, changed Job4!
     displayName: 'Run a one-line script'
