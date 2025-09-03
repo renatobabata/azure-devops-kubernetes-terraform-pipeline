@@ -1,0 +1,34 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Build
+  jobs:
+  - job: FirstJob
+    steps:
+    - bash: echo Build FirstJob
+  - job: SecondJob
+    steps:
+    - bash: echo Build SecondJob
+- stage: DevDeploy
+  jobs:
+  - job: DevDeploy
+    steps:
+    - bash: echo DevDeploy
+- stage: QADeploy
+  jobs:
+  - job: QADeploy
+    steps:
+    - bash: echo QADeploy
+- stage: ProdDeploy
+  jobs:
+  - job: ProdDeploy
+    steps:
+    - bash: echo ProdDeploy
+
+steps:
+- script: echo Job1 Step1!
+  displayName: 'Run a one-line script'
