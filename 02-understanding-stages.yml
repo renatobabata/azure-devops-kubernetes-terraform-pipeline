@@ -23,6 +23,8 @@ stages:
     steps:
     - bash: echo $(PipelineLevelVariable)DeployJob
 - stage: QADeploy
+  variables:
+    environment: QA
   dependsOn: DevDeploy
   jobs:
   - job: QADeploy
