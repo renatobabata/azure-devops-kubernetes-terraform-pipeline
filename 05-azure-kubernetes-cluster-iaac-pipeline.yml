@@ -7,25 +7,31 @@ pool:
 steps:
 - script: echo K8S Terraform Azure!
   displayName: 'Run a one-line script'
+
 - task: DownloadSecureFile@1
   name: publickey
   inputs:
     secureFile: 'azure_rsa.pub'
-    #secureFile: 'azure_rsa'
     retryCount: '5'
 
 - task: TerraformInstaller@0
   inputs:
-    terraformVersion: 'latest'  # or specify a version like '1.5.7'
+    terraformVersion: 'latest'
+
+- script: |
+    echo "##[group]Authenticating with Service Principal"
+    az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
+    echo "##[endgroup]"
+  displayName: 'Authenticate to Azure'
 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    #commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     commandOptions: '-var ssh_public_key=$(publickey.secureFilePath)'
-    backendServiceArm: 'azure-resource-manager-service-connection'
     backendAzureRmStorageAccountName: 'storageacctrenatoxyz'
     backendAzureRmContainerName: 'storageacctrenatocontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
+	
+	
