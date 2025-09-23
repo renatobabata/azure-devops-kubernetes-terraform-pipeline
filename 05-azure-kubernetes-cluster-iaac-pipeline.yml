@@ -33,5 +33,3 @@ steps:
     backendAzureRmStorageAccountName: 'storageacctrenatoxyz'
     backendAzureRmContainerName: 'storageacctrenatocontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
-	
-	
