@@ -30,7 +30,7 @@ steps:
     command: 'init'
     backendType: 'azurerm'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    #commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendServiceArm: 'azure-resource-manager-service-connection'
     backendAzureRmStorageAccountName: 'storageacctrenatoxyz'
     backendAzureRmContainerName: 'storageacctrenatocontainer'
