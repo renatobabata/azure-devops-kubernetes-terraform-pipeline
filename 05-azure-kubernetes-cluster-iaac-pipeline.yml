@@ -30,6 +30,7 @@ steps:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
     commandOptions: '-var ssh_public_key=$(publickey.secureFilePath)'
+    backendServiceArm: 'azure-resource-manager-service-connection'
     backendAzureRmStorageAccountName: 'storageacctrenatoxyz'
     backendAzureRmContainerName: 'storageacctrenatocontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
