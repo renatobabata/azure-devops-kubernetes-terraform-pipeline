@@ -36,9 +36,9 @@ steps:
     backendAzureRmContainerName: 'storageacctrenatocontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
 
-#- task: TerraformTask@5
-#  inputs:
-#    command: 'apply'
-#    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-#    commandOptions: '-var ssh_public_key=$(publickey.secureFilePath)'
-#    environmentServiceName: 'azure-resource-manager-service-connection'
+- task: TerraformTask@5
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    commandOptions: '-var ssh_public_key=$(publickey.secureFilePath)'
+    environmentServiceName: 'azure-resource-manager-service-connection'
