@@ -24,8 +24,7 @@ steps:
     echo "##[endgroup]"
   displayName: 'Authenticate to Azure'
 
-#- task: TerraformTask@5
-- task: TerraformCLI@0
+- task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'init'
